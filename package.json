@@ -1,0 +1,52 @@
+{
+  "name": "lotus_backend",
+  "version": "0.0.0",
+  "private": false,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "lowdb": "^3.0.0",
+    "uuid": "^9.0.0",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "prettier": "2.3.2",
+    "typescript": "^4.9.4"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --ignore \"db.json\" src/index.js",
+    "lint": "lint-staged",
+    "lint-all:eslint": "eslint src --fix --quiet --no-error-on-unmatched-pattern",
+    "lint-all:prettier": "prettier --write \"./src/**/*.{js}\" --no-error-on-unmatched-pattern",
+    "lint-all": "yarn lint-all:prettier && yarn lint-all:eslint",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "npx eslint --fix",
+      "git add"
+    ],
+    "src/**/*.{scss,js,ts,tsx}": [
+      "npx prettier --write --no-error-on-unmatched-pattern",
+      "git add"
+    ]
+  }
+}
